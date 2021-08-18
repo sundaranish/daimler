@@ -3,12 +3,15 @@ This Spring boot Microservice exposes REST API's for the user to invoke. Also, i
 
 ## Pre-requisite:
 * Create the schema USERS and create a table with name USERS having below columns,
-NO:	NUMBER	No		1	
-USERID:	VARCHAR2(30 BYTE)	No		2	
-TITLE:	VARCHAR2(200 BYTE)	No		3	
-DESCRIPTION:	VARCHAR2(500 BYTE)	No		4	
-USERNAME:	VARCHAR2(50 BYTE)	No		5	
-PASSWORD:	VARCHAR2(50 BYTE)	No		6	
+
+| API | Description |
+| ------ | ------ |
+|NO|	NUMBER - SEQUENCE|
+|USERID|	VARCHAR2(30 BYTE)
+|TITLE|	VARCHAR2(200 BYTE)	
+|DESCRIPTION|	VARCHAR2(500 BYTE)	
+|USERNAME|	VARCHAR2(50 BYTE)
+|PASSWORD|	VARCHAR2(50 BYTE)
 
 ## API list
 | API | Description |
