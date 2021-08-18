@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: company-management-service
+  profiles:
+    active: jdbc
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: never
+    include-exception: false
+
