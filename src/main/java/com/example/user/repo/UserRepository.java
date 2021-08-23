@@ -47,6 +47,21 @@ public class UserRepository {
 
 	}
 
+	public List<Users> getPosts(String title) {
+		List<Users> users;
+		try {
+			if (null != title) {
+				users = userRepository.findByTitleContainingIgnoreCase(title);
+			} else {
+				users = userRepository.findAll();
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return users;
+
+	}
+
 	public List<Users> getAllUser() {
 		List<Users> users;
 		try {

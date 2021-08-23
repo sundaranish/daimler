@@ -39,6 +39,21 @@ public class UserService {
 		}
 		return user;
 	}
+	
+	
+	public List<Users> getPosts(String title) {
+		List<Users> user;
+		try {
+			System.out.println("Entering getPosts...");
+
+			user = userRepository.getPosts(title);
+		} catch (Exception e) {
+			throw e;
+		}
+		return user;
+	}
+	
+	
 
 	public List<Users> getAllUser() {
 		List<Users> user;

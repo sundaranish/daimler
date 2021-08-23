@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.expression.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,7 +67,7 @@ public class UserController {
 	@ResponseBody
 	public AuthResponse generateToken(@RequestBody AuthRequest authRequest) throws Exception {
 		try {
-			
+
 			System.out.println("authenticating a user " + authRequest.getUserName());
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
@@ -92,6 +93,30 @@ public class UserController {
 		try {
 			System.out.println("getting a user - " + userId);
 			users = userService.getUserByUserId(userId);
+			if (users.size() >= 1) {
+				for (Users user : users) {
+					UserDto userDto = convertToDto(user);
+					usersDtos.add(userDto);
+				}
+				return new ResponseEntity<>(usersDtos, HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>(usersDtos, HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	@GetMapping("/search")
+	@ResponseBody
+	public ResponseEntity<List<UserDto>> getPosts(@RequestHeader Map<String, String> headers,
+			@Param("title") String title) {
+		List<Users> users;
+		List<UserDto> usersDtos = new ArrayList<UserDto>();
+		try {
+			System.out.println("getting posts - ");
+			users = userService.getPosts(title);
 			if (users.size() >= 1) {
 				for (Users user : users) {
 					UserDto userDto = convertToDto(user);

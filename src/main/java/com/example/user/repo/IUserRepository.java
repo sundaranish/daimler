@@ -13,5 +13,7 @@ public interface IUserRepository extends JpaRepository<Users, Integer> {
 	public List<Users> findByUserId(String userId);
 
 	public List<Users> findByUserName(String userName);
+	
+	public List<Users> findByTitleContainingIgnoreCase(String title);
 
 }
